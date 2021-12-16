@@ -6,10 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 final class QuadNode<T> {
-    private double x;
-    private double y;
-    private double width;
-    private double height;
+    private int x;
+    private int y;
+    private int width;
+    private int height;
     private QuadNode<T> parent;
     private Point<T> point;
     private QuadNode<T> northWest;
@@ -17,7 +17,7 @@ final class QuadNode<T> {
     private QuadNode<T> SouthWest;
     private QuadNode<T> SouthEast;
 
-    public QuadNode(double x, double y, double width, double height, QuadNode<T> parent) {
+    public QuadNode(int x, int y, int width, int height, QuadNode<T> parent) {
         this.x = x;
         this.y = y;
         this.width = width;

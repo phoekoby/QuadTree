@@ -8,8 +8,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 final class Point<T> {
-    private double x;
-    private double y;
+    private int x;
+    private int y;
     private T value;
 
     @Override

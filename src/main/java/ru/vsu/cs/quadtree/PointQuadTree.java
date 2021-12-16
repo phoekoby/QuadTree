@@ -11,12 +11,12 @@ public final class PointQuadTree<T> implements QuadTree<T> {
     private final QuadNode<T> root;
     private int size = 0;
 
-    public PointQuadTree(double minX, double minY, double maxX, double maxY) {
+    public PointQuadTree(int minX, int minY, int maxX, int maxY) {
         this.root = new QuadNode<>(minX, minY, maxX - minX, maxY - minY, null);
     }
 
     @Override
-    public Point<T> add(double x, double y, T val) {
+    public Point<T> add(int x, int y, T val) {
         if (x < root.getX() || y < root.getY() || x > root.getX() + root.getWidth() || y > root.getY() + root.getHeight()) {
             return null;
         }
@@ -48,13 +48,13 @@ public final class PointQuadTree<T> implements QuadTree<T> {
         return added;
     }
 
-    private QuadNode<T> getNodeForPoint(QuadNode<T> parent, double x, double y) {
-        double minX = parent.getX() + parent.getWidth() / 2;
-        double minY = parent.getY() + parent.getHeight() / 2;
-        if (x < minX) {
-            return y < minY ? parent.getNorthWest() : parent.getSouthWest();
+    private QuadNode<T> getNodeForPoint(QuadNode<T> parent, int x, int y) {
+        int borderX = parent.getX() + parent.getWidth() / 2;
+        int borderY = parent.getY() + parent.getHeight() / 2;
+        if (x < borderX) {
+            return y < borderY ? parent.getNorthWest() : parent.getSouthWest();
         } else {
-            return y < minY ? parent.getNorthEast() : parent.getSouthEast();
+            return y < borderY ? parent.getNorthEast() : parent.getSouthEast();
         }
     }
 
@@ -68,10 +68,10 @@ public final class PointQuadTree<T> implements QuadTree<T> {
     private void separation(QuadNode<T> quadNode) {
         Point<T> point = quadNode.getPoint();
         quadNode.setPoint(null);
-        double x = quadNode.getX();
-        double y = quadNode.getY();
-        double halfWidth = quadNode.getWidth() / 2;
-        double halfHeight = quadNode.getHeight() / 2;
+        int x = quadNode.getX();
+        int y = quadNode.getY();
+        int halfWidth = quadNode.getWidth() / 2;
+        int halfHeight = quadNode.getHeight() / 2;
         quadNode.setNorthWest(new QuadNode<>(x, y, halfWidth, halfHeight, quadNode));
         quadNode.setNorthEast(new QuadNode<>(x + halfWidth, y, halfWidth, halfHeight, quadNode));
         quadNode.setSouthWest(new QuadNode<>(x, y + halfHeight, halfWidth, halfHeight, quadNode));
@@ -80,13 +80,13 @@ public final class PointQuadTree<T> implements QuadTree<T> {
     }
 
     @Override
-    public T get(double x, double y) {
+    public T get(int x, int y) {
         QuadNode<T> node = find(this.root, x, y);
         return node != null ? node.getPoint().getValue() : null;
     }
 
     @Override
-    public T remove(double x, double y) {
+    public T remove(int x, int y) {
         QuadNode<T> node = find(root, x, y);
         if (node != null) {
             T value = node.getPoint().getValue();
@@ -99,7 +99,7 @@ public final class PointQuadTree<T> implements QuadTree<T> {
     }
 
     @Override
-    public boolean contains(double x, double y) {
+    public boolean contains(int x, int y) {
         return get(x, y) != null;
     }
 
@@ -139,7 +139,7 @@ public final class PointQuadTree<T> implements QuadTree<T> {
     }
 
     @Override
-    public QuadNode<T> find(QuadNode<T> node, double x, double y) {
+    public QuadNode<T> find(QuadNode<T> node, int x, int y) {
         QuadNode<T> result = null;
         if (node.getPoint() != null && node.getNorthWest() == null) {
             result = node.getPoint().getX() == x && node.getPoint().getY() == y ? node : null;

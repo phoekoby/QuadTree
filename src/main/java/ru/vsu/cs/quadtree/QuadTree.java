@@ -3,11 +3,11 @@ package ru.vsu.cs.quadtree;
 import java.util.List;
 
 public interface QuadTree<T> extends Iterable<T> {
-    Point<T> add(double x, double y, T val);
-    T get(double x, double y);
-    T remove(double x, double y);
-    boolean contains(double x, double y);
-    QuadNode<T> find(QuadNode<T> node, double x, double y);
+    Point<T> add(int x, int y, T val);
+    T get(int x, int y);
+    T remove(int x, int y);
+    boolean contains(int x, int y);
+    QuadNode<T> find(QuadNode<T> node, int x, int y);
     List<T> getValues();
     boolean isEmpty();
     List<String> getPoints();
