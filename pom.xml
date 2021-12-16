@@ -9,9 +9,12 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <github.global.server>github</github.global.server>
+        <github.maven-plugin>0.10</github.maven-plugin>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -21,6 +24,9 @@
             <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.github/site-maven-plugin -->
 
     </dependencies>
+
+
 </project>
