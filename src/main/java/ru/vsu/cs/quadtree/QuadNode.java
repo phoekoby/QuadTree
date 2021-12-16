@@ -12,7 +12,6 @@ final class QuadNode<T> {
     private double height;
     private QuadNode<T> parent;
     private Point<T> point;
-    private QuadNodeType nodeType = QuadNodeType.EMPTY;
     private QuadNode<T> northWest;
     private QuadNode<T> northEast;
     private QuadNode<T> SouthWest;

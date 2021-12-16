@@ -91,7 +91,6 @@ public final class PointQuadTree<T> implements QuadTree<T> {
         if (node != null) {
             T value = node.getPoint().getValue();
             node.setPoint(null);
-            //node.setNodeType(NodeType.EMPTY);
             size--;
             return value;
         } else {
