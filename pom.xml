@@ -22,7 +22,6 @@
             <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.github/site-maven-plugin -->
 
     </dependencies>
     <build>
